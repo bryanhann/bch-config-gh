@@ -2,6 +2,8 @@
 
 r=$(dirname $(dirname ${BASH_SOURCE[0]}))
 
+rm -f ~/.config/gh
+ln -s ${r}/config.gh ~/.config/gh
 export BCH_CONFIG_GH__root=${r}
 export BCH_CONFIG_GH__init=${r}/.bch/activate.sh
 export BCH_CONFIG_GH__lbin=${r}/.bch/lbin
@@ -13,10 +15,6 @@ for s in $(ls ${r}/.bch/lbin/bch*); do
      [ ! -f ${d} ] && echo "[cookiecutter.dotted] linking ${s}"
      [ ! -f ${d} ] && ln -s ${s} ${d}
 done
-
-d=${r}/.bch/bin
-[[ ":$PATH:" == *":${d}:"* ]] || echo "[cookiecutter.dotted] appending ${d}"
-[[ ":$PATH:" == *":${d}:"* ]] || export PATH=${PATH}:${d}
 
 source ${r}/.bch/init/init.sh
 
