@@ -1,6 +1,6 @@
 # bch-config-gh
 
-version = 0.0.1
+version = 0.0.2
 
 ## bch-config-gh
 
