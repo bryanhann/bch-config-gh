@@ -1,5 +1,23 @@
+#!/usr/bin/env bash
+
+. $(dirname $BASH_SOURCE)/bash_colors.sh
+
+::warn:: ()
+{
+    clr_reverse "[:warn:] $@ "
+}
+
 ::dbg:: () {
     [ -f ~/DEBUG ] && echo [:dbg:] $@
+}
+
+::ln:: () {
+    local real=$1
+    local link=$2
+    [ -L $link ] && rm -f $link
+    [ -d $line ] && ::warn:: "already exists! $link"
+    [ -d $line ] && return
+    ln -s $real $link
 }
 
 ::lbin:: () {
